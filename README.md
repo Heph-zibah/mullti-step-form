@@ -88,9 +88,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [oadaramola]( https://oadaramola.vercel.app/)
+- Frontend Mentor - [@Heph-zibah](https://www.frontendmentor.io/profile/Heph-zibah)
+- Twitter - [@oadaramola]( https://twitter.com/oadaramola10)
 
 
 ## Acknowledgments
