@@ -7,12 +7,12 @@ const Layout = ({children}: LayoutProps) => {
       <aside className="w-full shrink-0 lg:hidden">
         <Sidebar />
       </aside>
-      <div className="flex gap-6 md:min-h-[500px] bg-white mx-5 p-5 rounded-xl -my-24 lg:-my-0">
+      <div className="flex gap-6 md:min-h-[500px] bg-white mx-5 p-5 rounded-xl -mt-24 mb-24 lg:-my-0">
         <aside className="w-64 shrink-0 hidden lg:block">
           <Sidebar />
         </aside>
 
-        <main className="flex-1 ">{children}</main>
+        <main className="flex-1 relative ">{children}</main>
       </div>
     </div>
   );

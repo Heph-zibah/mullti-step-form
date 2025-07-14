@@ -5,7 +5,7 @@ import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -14,35 +14,33 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  email: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
- phone: z.number().min(2, {
-    message: "Username must be at least 2 characters.",
+  email: z.email({ message: "Email is required" }),
+  phone: z.string({
+    message: "Phone number is required.",
   }),
 });
 
 const Information = () => {
-      const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-          username: "",
-          email: "",
-          phone: 0,
-        },
-      });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      phone: "",
+    },
+  });
 
-      // 2. Define a submit handler.
-      function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-      }
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
+
   return (
-    <div className="max-w-md mx-auto">
+    <section className="max-w-md mx-auto hidden">
       <h1 className="text-2xl lg:text-4xl text-[var(--blue-950)] font-bold">
         Personal Info
       </h1>
@@ -108,12 +106,9 @@ const Information = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="bg-[var(--blue-950)]">
-            Next Step
-          </Button>
         </form>
       </Form>
-    </div>
+    </section>
   );
 };
 
