@@ -14,12 +14,17 @@ const AddOns = () => {
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
 
   const handleCheckboxChange = (id: string) => {
+
     setSelectedAddOns((prev) =>
       prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
     );
   };
 
   const handleSubmit = () => {
+     if (!selectedAddOns.length) {
+       alert("Please select a plan");
+       return;
+     }
     const billingCycle = stepsData.plan?.billingCycle || "monthly"; // default fallback
 
     const selectedData = addOnsMap
