@@ -1,23 +1,21 @@
 "use client";
 
 import React, {useState} from 'react'
-import Image from 'next/image';
-import {plansData} from "@/lib/data";
-import { PlanType } from '@/lib/type';
+import StepsLayout from "@/layout/StepsLayout";
+import Image from "next/image";
+import { plansData } from "@/lib/data";
+import { PlanType } from "@/lib/type";
 
 const Plan = () => {
-    const plans: PlanType[] = plansData
-    const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
-      "yearly"
-    );
+  const plans: PlanType[] = plansData;
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
+    "yearly"
+  );
   return (
-    <section className="max-w-md mx-auto">
-      <h1 className="text-2xl lg:text-4xl text-[var(--blue-950)] font-bold">
-        Select your plan
-      </h1>
-      <p className="text-[var(--grey-500)] mt-2">
-        You have the option of monthly or yearly billing.
-      </p>
+    <StepsLayout
+      title="Select your plan"
+      subtitle="You have the option of monthly or yearly billing."
+    >
       <div className="grid lg:grid-cols-3 gap-4 mt-8">
         {plans.map((plan) => (
           <div
@@ -79,8 +77,8 @@ const Plan = () => {
           Yearly
         </p>
       </div>
-    </section>
+    </StepsLayout>
   );
-}
+};
 
 export default Plan

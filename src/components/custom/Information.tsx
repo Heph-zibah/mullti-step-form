@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-
+import StepsLayout from "@/layout/StepsLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,13 +40,10 @@ const Information = () => {
   }
 
   return (
-    <section className="max-w-md mx-auto hidden">
-      <h1 className="text-2xl lg:text-4xl text-[var(--blue-950)] font-bold">
-        Personal Info
-      </h1>
-      <p className="text-[var(--grey-500)] mt-2">
-        Please provide your name, email address, and phone number.
-      </p>
+    <StepsLayout
+      title="Personal Info"
+      subtitle="Please provide your name, email address, and phone number."
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 mt-8">
           <FormField
@@ -108,7 +105,7 @@ const Information = () => {
           />
         </form>
       </Form>
-    </section>
+    </StepsLayout>
   );
 };
 

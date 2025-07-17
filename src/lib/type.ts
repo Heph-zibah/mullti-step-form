@@ -1,5 +1,7 @@
-export interface LayoutProps{
-  children: React.ReactNode
+export interface LayoutProps {
+  children?: React.ReactNode;
+  title?: string;
+  subtitle?: string;
 }
 
 export interface PlanType {
@@ -11,4 +13,14 @@ export interface PlanType {
     yearly: string;
   };
   promo: string;
+}
+
+export interface AddOnType {
+  id: string;
+  title: string;
+  description: string;
+  price: {
+    monthly: string;
+    yearly: string;
+  };
 }
