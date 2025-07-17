@@ -108,7 +108,7 @@ const Information = () => {
               </FormItem>
             )}
           />
-          <div className="bg-white px-6 py-3 font-semibold fixed bottom-0 right-0 w-full flex justify-between items-center lg:bg-transparent lg:absolute lg::top-20 ">
+          <div className="bg-white px-6 py-3 font-semibold fixed bottom-0 right-0 w-full flex justify-between items-center lg:bg-transparent lg:absolute">
             <Button
               type="button"
               variant={"secondary"}
