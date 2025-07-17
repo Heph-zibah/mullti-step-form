@@ -5,12 +5,32 @@ import StepsLayout from "@/layout/StepsLayout";
 import Image from "next/image";
 import { plansData } from "@/lib/data";
 import { PlanType } from "@/lib/type";
-
+import { Button } from "@/components/ui/button";
+import { useStep } from "@/hooks/StepProvider";
 const Plan = () => {
   const plans: PlanType[] = plansData;
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "yearly"
   );
+  const [selectedPlan, setSelectedPlan] = useState<PlanType | null>(null);
+
+  const { onNextStep, onPrevStep, updateStepsData } = useStep();
+  const handleSubmit = () => {
+    if (!selectedPlan) {
+      alert("Please select a plan");
+      return;
+    }
+
+    updateStepsData({
+      plan: {
+        id: selectedPlan.id,
+        title: selectedPlan.title,
+        billingCycle,
+        price: selectedPlan.price[billingCycle],
+      },
+    });
+    onNextStep();
+  };
   return (
     <StepsLayout
       title="Select your plan"
@@ -20,7 +40,12 @@ const Plan = () => {
         {plans.map((plan) => (
           <div
             key={plan.id}
-            className="border border-[var(--grey-500)] rounded-lg p-4 flex md:flex-col items-center md:items-start md:gap-14 gap-7"
+            onClick={() => setSelectedPlan(plan)}
+            className={`cursor-pointer border rounded-lg p-4 flex md:flex-col items-center md:items-start md:gap-14 gap-7 ${
+              selectedPlan?.id === plan.id
+                ? "border-[var(--blue-950)] bg-[var(--blue-100)]"
+                : "border-[var(--grey-500)]"
+            }`}
           >
             <div>
               <Image
@@ -76,6 +101,23 @@ const Plan = () => {
         >
           Yearly
         </p>
+      </div>
+      <div className="bg-white px-6 py-3 font-semibold fixed bottom-0 right-0 w-full flex justify-between items-center lg:bg-transparent lg:absolute lg::top-20 ">
+        <Button
+          type="button"
+          onClick={() => onPrevStep()}
+          variant={"secondary"}
+          className="font-semibold transition-colors duration-300 "
+        >
+          Go Back
+        </Button>
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          className="bg-[var(--blue-950)]   transition-colors duration-300 "
+        >
+          Next Step
+        </Button>
       </div>
     </StepsLayout>
   );

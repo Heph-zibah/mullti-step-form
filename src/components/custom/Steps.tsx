@@ -1,19 +1,16 @@
-import React from 'react'
-import Information from '@/components/custom/Information'
-import Plan from "@/components/custom/Plan";
-import AddOns from "@/components/custom/AddOns";
-import Preview from "@/components/custom/Preview";
-import Success from "@/components/custom/Success";
-import { Button } from "@/components/ui/button";
+"use client";
+import React from "react";
+// import { Button } from "@/components/ui/button";
+import { StepProvider } from "@/hooks/StepProvider";
+import { StepsComponent } from "@/components/custom/StepsComponent";
 const Steps = () => {
   return (
     <div className="">
-      <Information />
-      <Plan />
-      <AddOns />
-      <Preview />
-      <Success />
-      <div className="bg-white px-6 py-3 font-semibold fixed bottom-0 right-0 w-full flex justify-between items-center lg:bg-transparent lg:absolute lg::top-20 ">
+      <StepProvider>
+        <StepsComponent />
+      </StepProvider>
+
+      {/* <div className="bg-white px-6 py-3 font-semibold fixed bottom-0 right-0 w-full flex justify-between items-center lg:bg-transparent lg:absolute lg::top-20 ">
         <Button
           type="button"
           variant={"secondary"}
@@ -27,9 +24,9 @@ const Steps = () => {
         >
           Next Step
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default Steps
+export default Steps;
